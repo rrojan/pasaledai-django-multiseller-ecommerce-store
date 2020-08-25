@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+{% block content %}
+<p>{{ object.title }}</p>
+<p>Price: {{ object.price }}</p>
+<p>Description:<br>{{ object.description }}</p>
+{% if object.summary %}<p>{{ object.summary }}</p>{% endif %}
+{% if object.featured %}<p>This is a featured product.</p>{% endif %}
+<button type="submit"><a href="/products/{{ object.id }}/add/" style="text-decoration:none;">Add to Cart</a></button>
+{% endblock %}

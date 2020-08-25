@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+    <h1 style="text-align:center;">Cart</h1>
+    {% if not user.is_authenticated %}
+    <p style="text-align: center; color: red;">You aren't logged in. Only registered users can order and add products to cart.</p>
+    <p><a href = "/account/login/">Click here to log in</a></p>
+    {% else %}
+    {{ order.title }} added to cart!
+
+    <a href = "/cart/{{ request.user.id }}">Click here to view your cart.</a>
+    {% endif %}
+{% endblock content %}

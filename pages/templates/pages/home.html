@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center;">Pasalé<b style="background-color: #FF9900; color: white; padding-right:5px; border-radius: 4px;"> Dai  </b></h1>
+<hr>
+<h2 style="text-align:center;">About Site:</h2>
+<p style="text-align:center">PasaleDai™ is an online shopping platform dedicated to supplying everyday products and fresh groceries at every customer's doorstep.</p>
+<br><br>
+<h3 style="text-align: center">Docs:</h3>
+<h4>User classes:</h4>
+<ul>
+    <li>
+        User(Normal): Can write, edit or delete blog posts. Cannot create, edit or delete product listings.
+    </li>
+    <li>
+        Seller: Can create, edit or delete product listings. Requires invite code to signup.
+    </li>
+    <li>
+        Admin: Can do everything. Can generate custom InviteCode for seller signups.
+    </li>
+
+</ul>
+<h4>Apps:</h4>
+<ul>
+    <li>
+        accounts: Create and manage user accounts
+    </li>
+    <li>
+        cart: Create and manage customer's cart
+    </li>
+    <li>
+        blogs: Create and manage user blogs
+    </li>
+    <li>
+        pages: Home, About, Contact-us
+    </li>
+    <li>
+        products: Create and manage seller products
+    </li>
+</ul>
+<br>
+<br>
+<br><br>
+<br>
+
+
+{% endblock %}

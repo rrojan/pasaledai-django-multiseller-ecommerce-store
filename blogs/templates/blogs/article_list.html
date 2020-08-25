@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Articles{% endblock %}
+{% block content %}
+{% if not user.is_authenticated %}
+<h2 style="text-align:center">This is the blogs page.</h2> <h3 style="text-align:center">To create a blog post, <a href="account:login">login</a>  or <a href="account:signup">signup</a> as a user.</h3>
+{% else %}
+<h2 style="text-align:center">This is the blogs page.</h2> <h4 style="text-align:center">As a User, you can create, delete or update blog posts</h4>
+<h5 style="text-align: right;"><a href="/articles/create">Create a new post</a></h5>
+{% endif %}
+{% for object in object_list.reverse %}
+
+<div class="article">
+    <div class="row">
+        <div class="column">
+        </div>
+        <div class="column">
+            <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
+            <p>{{ object.snippet }}</p>
+            <p>{{ object.date }}</p>
+            <p class="author">Author: <b>{{ object.author.username }}</b></p>
+        </div>
+    </div>
+</div>
+{% endfor %}{% endblock %}

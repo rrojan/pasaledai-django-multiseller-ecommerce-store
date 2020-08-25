@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<form action = '.' method="POST">{% csrf_token %}
+    <h2 style="text-align:center">Seller Signup Form</h2>
+    <h5><a href="/account/signup/">Sign up as a user instead?</a></h5>
+    {{ form.as_p }}
+    <h6>Hint: Defauult invite codes are 4 digit sequential number (1111,2222, etc)</h6><br><br>
+    <input type="submit" value="Sign Up!">
+</form>
+{% endblock %}

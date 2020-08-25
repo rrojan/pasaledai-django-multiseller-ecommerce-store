@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} | PasaléDai</title>
+        <style>
+            body {
+              margin: 0;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .topnav {
+              overflow: hidden;
+              background-color: #333;
+              postition: fixed;
+            }
+
+            .topnav a {
+              float: left;
+              color: #f2f2f2;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+              font-size: 17px;
+            }
+
+            .topnav a:hover {
+              background-color: #ddd;
+              color: black;
+            }
+
+            .topnav a.active {
+              background-color: #4CAF50;
+              color: white;
+            }
+
+            .articles{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 30px;
+
+            }
+
+            .article{
+                padding: 10px;
+                border: 1px solid #333333;
+                position: relative;
+                padding-bottom: 40px;
+                width: 80%;
+                margin: auto;
+                margin-bottom: 15px;
+            }
+
+            .article h2{
+                font-size: 1.6em;
+            }
+
+            .article a {
+                text-decoration: none;
+                color: #333333;
+            }
+
+            .article .author{
+                padding: 10px;
+                background: #ff9900;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                margin: 0;
+                color: #0f121f;
+            }
+
+            a.highlight{
+                border: 1px solid #ff9900;
+                padding: 10px;
+                border-radius: 4px;
+                color: black;
+                background-color: #ff9900;
+
+            }
+
+            .column {
+              float: left;
+              width: 30%;
+            }
+
+            .row:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+        </style>
+
+</head>
+<body>
+<div class="topnav">
+    <a href = '/' style=" padding: 0px; margin-right: 450px; margin-left: 10px;"><h3>Pasalé<b style="background-color: #FF9900; color: white; padding-right:5px; border-radius: 4px;"> Dai  </b></h3></a>
+    <a class="Home navbutton" href="/">Home</a>
+    <a class="navbutton" href="/products/" >Shop</a>
+    <a class="navbutton" href="/articles/">Blog</a>
+    <a class="navbutton" href="/about/">About</a>
+</div>
+<div style="width:98%; margin-left:5px;">
+    <p style="text-align:right">Welcome, {% if request.user.is_authenticated %}<a href = "../admin">{{ request.user }}</a>
+        <br>User ID: {{ user.id }}<br>
+    <a href = "/account/logout/">Logout</a>
+    {% else %}Unregistered User
+    <br>
+    <a href = "/account/login/">Login!</a><br><a href = "/account/signup/">Signup!</a>{% endif %}
+</p>
+{% block content %}{% endblock %}
+</div>
+<footer style="position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #ffffff;
+   color: #333333;
+   text-align: center;">
+Copyright 2020 PasaléDai
+</footer>
+</body>
+</html>

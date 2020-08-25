@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+    <h2 style="text-align: center;">{{request.user}}'s Cart</h2>
+    {% for item in cart.items %}
+    {% if item.userid == request.user.id %}
+    <p>{{ item.object }}</p>
+    {% endif %}
+    {% endfor %}
+{% endblock content %}
