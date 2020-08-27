@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}{{ object.title }}{% endblock %}
 {% block content %}
-<p>{{ object.title }}</p>
-<p>Price: {{ object.price }}</p>
-<p>Description:<br>{{ object.description }}</p>
-{% if object.summary %}<p>{{ object.summary }}</p>{% endif %}
-{% if object.featured %}<p>This is a featured product.</p>{% endif %}
-<button type="submit"><a href="/products/{{ object.id }}/add/" style="text-decoration:none;">Add to Cart</a></button>
+<h1 style="text-align: center;">{{ object.title }}</h1>
+<hr><br><br>
+<img src="{{ object.thumb.url }}" height="320" width="320"style="display: block;margin-left: auto;margin-right: auto;">
+<br><br>
+<h4>Price: {{ object.price }}</h4>
+<br><br>
+<p><h5>Description:</h5><br>{{ object.description }}</p>
+{% if object.summary %}<p>{{ object.summary }}</p>{% endif %}<br><br>
+{% if object.featured %}<h6 style="text-align: center;">This is a featured product.</h6>{% endif %}
+<button type="submit" formmethod="POST" style="border-color: white;" class="btn btn-success"><a href="/products/{{ object.id }}/add/">Add to Cart</a></button>
 {% endblock %}

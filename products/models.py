@@ -12,6 +12,7 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
     thumb = models.ImageField(upload_to='products/media', default='default.png', blank=True)
     seller = models.ForeignKey(User, on_delete=models.PROTECT, default=None)
+    date = models.DateField(default=None)
 
     def get_absolute_url(self):
         # return f"/products/{self.id}/"
@@ -22,6 +23,9 @@ class Product(models.Model):
 
     def snippet(self):
         return self.description[:40] + '...'
+
+    def snippet2(self):
+        return self.description[:120] + '...'
 
 
 

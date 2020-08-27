@@ -15,7 +15,7 @@ from .forms import ArticleCreateForm
 # Create your views here.
 # class based views
 class ArticleListView(ListView):
-    queryset = Article.objects.all()
+    queryset = Article.objects.order_by('-date')
     template_name = 'blogs/article_list.html'
 
 

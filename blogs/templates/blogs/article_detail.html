@@ -5,9 +5,9 @@
 <h4>{% if object.featured %}(This is a featured article){% endif %}</h4>
 {% if user.is_authenticated %}
 <div style="text-align: right;">
-<a href="articles:update-view"><h6 style="display: inline; text-align: right; ">Update</h6></a>
-<a href="articles:delete-view"><h6 style="display: inline; text-align: right; ">Delete</h6></a>
+<a href="articles:update-view"><h6 style="display: inline; text-align: right; " class="btn btn-primary">Update</h6></a>
+<a href="articles:delete-view"><h6 style="display: inline; text-align: right; " class="btn btn-warning">Delete</h6></a>
 </div>
 {% endif %}
-<p>{{ object.description }}</p>
+<p>{{ object.description|safe }}</p>
 {% endblock %}

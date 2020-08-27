@@ -2,9 +2,29 @@
 {% block title %}Cart{% endblock %}
 {% block content %}
     <h2 style="text-align: center;">{{request.user}}'s Cart</h2>
+    <hr>
+    <br><br><br>
     {% for item in cart.items %}
     {% if item.userid == request.user.id %}
-    <p>{{ item.object }}</p>
+        <div class="col-lg-4 col-md-6">
+            <a href="{{ item.object.get_absolute_url }}" style="text-decoration: none; color: #1b1b1b;">
+            {% if item.product.url %}
+            <a href="{{ item.product.get_absolute_url }}">
+            <img src="{{ item.product.thumb.url }}" class="img-fluid mb-2" style="width: 100px; height: 100px;">
+            </a>
+
+            {% else %}
+        
+            <img src="{{ item.product.thumb.url }}" class="img-fluid mb-2" style="width: 100px; height: 100px;">
+            {% endif %}
+            <h3>{{ item.product.title }}</h3>
+            <h4>Price: Rs {{ item.product.price }}</h4>
+            </a>
+            <br><hr><br><br>
+        </div>
     {% endif %}
     {% endfor %}
+    <br><br>
+    <h5>Total: {{ total }}</h5>
+    <a href="#" class="btn btn-success">Checkout</a>
 {% endblock content %}

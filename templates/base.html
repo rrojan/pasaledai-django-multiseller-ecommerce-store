@@ -1,8 +1,201 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static "pages/custom.css" %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="{% static "Logo.png" %}">
+  <!--<style>
+    img {
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+          transition:         transform .8s ease-in-out;
+}
+    img:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+  </style>-->
+  <style>
+    a {
+      color: darkolivegreen;
+    }
+  </style>
+
+  <title>{% block title %}{% endblock %}: PasaléDai</title>
+
+</head>
+
+<body>
+
+  <nav id="topNav" class="navbar navbar-expand-md navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static "Logo.png" class="logo"%}" width="30" height="30" class="d-inline-block align-top">
+        &nbsp;&nbsp;
+        <span style="size: 20px;">Pasalé<b style="background-color: darkolivegreen; color: white; padding-right:6px; border-radius: 5px;"> Dai  </b></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/products/">Shop&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/articles/">Blog&nbsp;</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About&nbsp;&nbsp;</a>
+          </li>
+          
+        <!--
+          <li>
+            <a role="button" href="/articles/" class="btn btn-primary">Blog</a>
+          </li>
+        -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <p style="text-align:right; padding-right: 10px;">Welcome, {% if request.user.is_authenticated %}<a href = "../admin">{{ request.user }}</a>
+    <br>
+<a href = "/account/logout/" style="font-size:12px;">Logout</a>
+{% else %}User
+<br>
+<a href = "/account/login/" style="font-size:13px;">Login!</a>&nbsp;&nbsp;&nbsp;<a href = "/account/signup/" style="font-size:13px;">Signup!</a>{% endif %}
+</p>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+  <br><br><br><br>
+  <footer style="position: fixed;
+     left: 0;
+     bottom: 0;
+     padding-bottom: 0px;
+     width: 100%;
+     background-color: #ffffff;
+     color: #333333;
+     text-align: center;
+     clear: both;
+     ">
+     
+  <p style="float: left;" >&nbsp;&nbsp;&nbsp;&nbsp;© 2020 PasaléDai</p><p style="float: right;">Made by: rrojan20 &nbsp;&nbsp;/&nbsp;&nbsp;Github: <a href="https://github.com/rrojan20">github.com/rrojan20</a>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+<!--
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>{% block xyz %}{% endblock %}: PasaléDai</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#" style=" padding: 0px; margin-right: 450px; margin-left: 10px;"><h3>Pasalé<b style="background-color: #FF9900; color: white; padding-right:7px; border-radius: 4px;"> Dai  </b></h3></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/products/">Shop</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/articles/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Blog
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/articles/">All Posts</a>
+              {% if user.is_authenticated %}
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/articles/create">Create New</a>
+              {% endif %}
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">GO!</button>
+        </form>
+      </div>
+    </nav>
+
+    <div style="width:98%; margin-left:5px;">
+      <p style="text-align:right">Welcome, {% if request.user.is_authenticated %}<a href = "../admin">{{ request.user }}</a>
+          <br>User ID: {{ user.id }}<br>
+      <a href = "/account/logout/">Logout</a>
+      {% else %}Unregistered User
+      <br>
+      <a href = "/account/login/">Login!</a><br><a href = "/account/signup/">Signup!</a>{% endif %}
+  </p>
+  {% block xx %}{% endblock %}
+  </div>
+  <footer style="position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: #ffffff;
+     color: #333333;
+     text-align: center;">
+  Copyright 2020 PasaléDai
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
+-->
+
+
+
+<!--
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %} | PasaléDai</title>
+    <title></title>
         <style>
             body {
               margin: 0;
@@ -100,24 +293,7 @@
     <a class="navbutton" href="/articles/">Blog</a>
     <a class="navbutton" href="/about/">About</a>
 </div>
-<div style="width:98%; margin-left:5px;">
-    <p style="text-align:right">Welcome, {% if request.user.is_authenticated %}<a href = "../admin">{{ request.user }}</a>
-        <br>User ID: {{ user.id }}<br>
-    <a href = "/account/logout/">Logout</a>
-    {% else %}Unregistered User
-    <br>
-    <a href = "/account/login/">Login!</a><br><a href = "/account/signup/">Signup!</a>{% endif %}
-</p>
-{% block content %}{% endblock %}
-</div>
-<footer style="position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #ffffff;
-   color: #333333;
-   text-align: center;">
-Copyright 2020 PasaléDai
-</footer>
 </body>
 </html>
+
+-->

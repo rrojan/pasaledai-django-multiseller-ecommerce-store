@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<form method="POST" action=".">{% csrf_token %}
+    {{ form.as_p}}
+    <input type="radio" value="cod" />Cash on Delivery<br>
+    <input type="radio" id='cats' value="esewa" disabled='disabled'>eSewa(coming soon)<br><br>
+    <a href = '/' class="btn btn-primary">Submit</a>
+</form>
+{% endblock %}

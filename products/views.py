@@ -79,18 +79,26 @@ def add_to_cart_view(request, id_):
     user_id = current_user.id
     print(user_id)
     
-    try:
-        usercart = UserCart.objects.get(uid=user_id)
-    except:
-        usercart = UserCart()
-        usercart.uid = user_id
-        print(usercart.uid)
-    
-    usercart.items.append({'object': obj, 'userid': user_id})
 
+
+    usercart = UserCart.objects.get(title="User cart")
+    
+    
+    usercart.items.append({'product': Product.objects.get(id=id_), 'userid': user_id})
+
+    total = 0
+
+    for item in usercart.items:
+        if user_id == item['userid']:
+            p = item['product']
+            print(p)
+            total += p.price
 
     context = {
-        'order': obj,
-        'cart': usercart
+        'user_id':user_id,
+        'cart': usercart,
+        'total': total,
+
     }
-    return render(request, 'products/add.html', context)
+
+    return render(request, 'cart/cart.html', context)

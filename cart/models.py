@@ -1,10 +1,12 @@
 from django.db import models
 from django.conf import settings
 from products.models import Product
+from django.shortcuts import redirect
 # Create your models here.
 
 
 class UserCart(models.Model):
+    title = models.CharField(max_length=100)
     items = list()
     uid = int()
 
@@ -26,3 +28,14 @@ class UserCart(models.Model):
 
     def snippet(self):
         return self.description[:40] + '...'    
+
+class Checkout(models.Model):
+    first_name = models.CharField(max_length=100)
+    middle_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        # return f"/products/{self.id}/"
+        return redirect(to='/')
