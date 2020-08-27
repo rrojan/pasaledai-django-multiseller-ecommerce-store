@@ -73,7 +73,9 @@
   </nav>
   <p style="text-align:right; padding-right: 10px;">Welcome, {% if request.user.is_authenticated %}<a href = "../admin">{{ request.user }}</a>
     <br>
-<a href = "/account/logout/" style="font-size:12px;">Logout</a>
+    <a href = "/cart/" style="font-size:12px;">My Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "/account/logout/" style="font-size:12px;">Logout</a>
+<br>
+
 {% else %}User
 <br>
 <a href = "/account/login/" style="font-size:13px;">Login!</a>&nbsp;&nbsp;&nbsp;<a href = "/account/signup/" style="font-size:13px;">Signup!</a>{% endif %}

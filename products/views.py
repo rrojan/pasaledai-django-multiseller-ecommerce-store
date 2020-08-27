@@ -55,24 +55,6 @@ def product_delete_view(request, id_):
     return render(request, 'products/delete.html', context)
 
 
-def product_pure_create_view(request):
-    print('pure-create view')
-    my_form = RawProductForm()
-    print(request.method, "1")
-    if request.method == 'POST':
-        my_form = RawProductForm(request.POST)
-        print(request.method, "2")
-        if my_form.is_valid():
-            print(request.method, "3")
-            Product.objects.create(**my_form.cleaned_data)
-            my_form = RawProductForm(request.POST or None)
-    print(request.method, "4")
-    context = {
-        'form': my_form
-    }
-    return render(request, 'products/pure_create.html', context)
-
-
 def add_to_cart_view(request, id_):
     obj = get_object_or_404(Product, id=id_)
     current_user = request.user
@@ -98,7 +80,8 @@ def add_to_cart_view(request, id_):
         'user_id':user_id,
         'cart': usercart,
         'total': total,
+        'order': Product.objects.get(id=id_),
 
     }
 
-    return render(request, 'cart/cart.html', context)
+    return render(request, 'products/add.html', context)

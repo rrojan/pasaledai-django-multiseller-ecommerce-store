@@ -4,6 +4,7 @@
     <h2 style="text-align: center;">{{request.user}}'s Cart</h2>
     <hr>
     <br><br><br>
+    {% if cart.items %}
     {% for item in cart.items %}
     {% if item.userid == request.user.id %}
         <div class="col-lg-4 col-md-6">
@@ -22,9 +23,15 @@
             </a>
             <br><hr><br><br>
         </div>
+        <br><br>
+    <h5>Total: {{ total }}</h5>
+    <a href="/cart/checkout/" class="btn btn-success">Checkout</a>
     {% endif %}
     {% endfor %}
+    {% else %}
+    <h5 style="text-align: center;">Your cart is empty!</h5>
     <br><br>
-    <h5>Total: {{ total }}</h5>
-    <a href="#" class="btn btn-success">Checkout</a>
+    <h5>Total: 0</h5>
+    <a href="#" class="btn btn-success" disabled="disabled">Checkout</a>
+    {% endif %}
 {% endblock content %}

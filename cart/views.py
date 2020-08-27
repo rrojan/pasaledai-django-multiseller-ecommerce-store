@@ -7,7 +7,7 @@ from django.views.generic import CreateView
 
 # Create your views here.
 
-def cart_view(request):
+def cart_view(request, id_=1):
     current_user = request.user
     user_id = current_user.id
 
